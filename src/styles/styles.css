@@ -1,0 +1,303 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* START OF CSS! */
+
+
+/* START OF CSS! */
+
+
+/* START OF CSS! */
+
+@font-face {
+    font-family: default-font;
+    src: url(../assets/StoryElementRegular-X3RWa.ttf);
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 11fr;
+    width: 100vw;
+    height: 100vh;
+}
+
+#header {
+    background-color: rgb(51, 51, 51);
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    padding-left: min(30px, 5%);
+    box-sizing: border-box;
+    font-family: default-font, sans-serif;
+}
+
+#sidebar {
+    background-color: rgb(221, 221, 221);
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: flex;
+    flex-direction: column;
+    padding: min(20px, 4%);
+    box-sizing: border-box;
+}
+
+#content {
+    background-color: rgb(238, 238, 238);
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#inbox,
+#today,
+#thisweek,
+#addproject {
+    background-color: rgb(221, 221, 221);
+    border-style: none;
+    border-radius: 5px;
+    height: 2rem;
+    font-size: 1.1rem;
+    font-family: default-font, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+#inbox:hover,
+#today:hover,
+#thisweek:hover,
+#addproject:hover {
+    background-color: rgb(204, 204, 204);
+}
+
+#projects {
+    margin-top: min(20px, 10%);
+    margin-bottom: min(20px, 10%);
+    font-size: 1.7rem;
+    font-weight: bold;
+    font-family: default-font, sans-serif;
+}
+
+#buttondisplay {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: default-font, sans-serif;
+}
+
+#addtask {
+    background-color: rgb(238, 238, 238);
+    border-style: none;
+    border-radius: 5px;
+    height: 2rem;
+    font-size: 1.1rem;
+    font-family: default-font, sans-serif;
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+#addtask:hover {
+    background-color: rgb(204, 204, 204);
+}
+
+#userform {
+    /* background-color: aqua; */
+    width: 50%;
+    height: auto;
+    padding: 7px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#ltitle,
+#ldescription,
+#lduedate,
+#lpriority {
+    font-family: default-font, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+
+#title,
+#description,
+#duedate,
+#priority {
+    width: 90%;
+    padding: 0;
+    border: none;
+    background-color: white;
+    height: 2.5em;
+    font-family: default-font, sans-serif;
+    padding-left: 3%;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+#description {
+    padding-top: 1px;
+}
+
+#add,
+#cancel {
+    width: 90%;
+    height: 3em;
+    border-radius: 15px;
+    border: none;
+    font-family: default-font, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add {
+    background-color: rgb(170, 255, 170);
+}
+
+#cancel {
+    background-color: rgb(255, 190, 190);
+}
