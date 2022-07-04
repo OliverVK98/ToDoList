@@ -1,4 +1,5 @@
 import Task from "./displaytask";
+let classTrack = [];
 
 function addTask() {
     let content = document.getElementById('content');
@@ -44,10 +45,12 @@ function addTask() {
     description.rows = '1';
     let priorityDiv = ['nu', 'u', 'vu'];
     let priorityInner = ['Not Urgent', 'Urgent', 'Very Urgent'];
+    let priorityColor = ['rgb(170, 255, 170)', 'rgb(255,250,156)', 'rgb(253,152,0)']
     for (let i = 0; i < priorityDiv.length; i++) {
         window[priorityDiv[i]] = document.createElement('option');
         window[priorityDiv[i]].value = priorityInner[i];
         window[priorityDiv[i]].innerHTML = priorityInner[i];
+        window[priorityDiv[i]].style = `background-color: ${priorityColor[i]}`;
         priority.appendChild(window[priorityDiv[i]]);
     }
     let buttonDiv = ['add', 'cancel'];
@@ -62,6 +65,8 @@ function addTask() {
     add.addEventListener('click', () => {
         let task = new Task(title.value, description.value, duedate.value, priority.value);
         task.displayTask();
+        classTrack.push(task);
+        console.log(classTrack);
         newForm.remove();
         let addtask = document.createElement('button');
         addtask.id = 'addtask';

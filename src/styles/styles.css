@@ -142,7 +142,11 @@ table {
 
 @font-face {
     font-family: default-font;
-    src: url(../assets/StoryElementRegular-X3RWa.ttf);
+    src: url(../assets/savate-regular.otf);
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 #container {
@@ -188,6 +192,9 @@ table {
     grid-column-end: 3;
     padding: 30px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #inbox,
@@ -300,4 +307,49 @@ table {
 
 #cancel {
     background-color: rgb(255, 190, 190);
+}
+
+.usertask {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: auto;
+    gap: 5px;
+    font-family: default-font, sans-serif;
+    background-color: rgb(221, 221, 221);
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.userhead {
+    display: flex;
+    justify-content: space-between;
+}
+
+.usertitle {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.userdesc {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.userdate {
+    width: auto;
+    display: flex;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.userbutton {
+    border-style: none;
+    border-radius: 10px;
+    background-color: rgb(255, 190, 190);
+    font-family: default-font, sans-serif;
 }
