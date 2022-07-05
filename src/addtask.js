@@ -1,5 +1,7 @@
 import Task from "./displaytask";
+import editFunc from './editfunc';
 let classTrack = [];
+let div = 0;
 
 function addTask() {
     let content = document.getElementById('content');
@@ -53,6 +55,11 @@ function addTask() {
         window[priorityDiv[i]].style = `background-color: ${priorityColor[i]}`;
         priority.appendChild(window[priorityDiv[i]]);
     }
+    priority.addEventListener('change', () => {
+        if (priority.value === 'Not Urgent') priority.style.backgroundColor = 'rgb(170, 255, 170)';
+        if (priority.value === 'Urgent') priority.style.backgroundColor = 'rgb(255,250,156)';
+        if (priority.value === 'Very Urgent') priority.style.backgroundColor = 'rgb(253,152,0)';
+    })
     let buttonDiv = ['add', 'cancel'];
     let buttonInner = ['Add', 'Cancel'];
     for (let i = 0; i < buttonDiv.length; i++) {
@@ -63,9 +70,16 @@ function addTask() {
     }
     add.type = 'submit';
     add.addEventListener('click', () => {
-        let task = new Task(title.value, description.value, duedate.value, priority.value);
-        task.displayTask();
+        let task = new Task(title.value, description.value, duedate.value, priority.value, div);
         classTrack.push(task);
+        task.displayTask(classTrack);
+        editFunc();
+        userbutton.addEventListener('click', () => {
+            classTrack = classTrack.filter(element => {
+                return element.getId() != null;
+            })
+        })
+        div++;
         console.log(classTrack);
         newForm.remove();
         let addtask = document.createElement('button');

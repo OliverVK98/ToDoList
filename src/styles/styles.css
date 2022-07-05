@@ -353,3 +353,11 @@ button:hover {
     background-color: rgb(255, 190, 190);
     font-family: default-font, sans-serif;
 }
+
+:read-write:focus {
+    background-color: white;
+}
+
+#priority {
+    background-color: rgb(170, 255, 170);
+}
