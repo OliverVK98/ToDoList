@@ -1,7 +1,7 @@
 let container = document.getElementById('container');
 
 function buildPage() {
-    let pageDiv = ['header', 'sidebar', 'content'];
+    let pageDiv = ['header', 'sidebar', 'contentpage'];
     for (let i = 0; i < pageDiv.length; i++) {
         window[pageDiv[i]] = document.createElement('div');
         window[pageDiv[i]].id = `${pageDiv[i]}`;
@@ -17,15 +17,17 @@ function buildPage() {
         sidebar.appendChild(window[sidebarDiv[i]]);
         window[sidebarDiv[i]].innerHTML = sidebarInner[i];
     }
-    let contentDiv = ['buttondisplay', 'addtask'];
-    let contentDivEl = ['h1', 'button'];
-    let contentInner = ['Inbox', '+ Add Task']
+    let contentDiv = ['buttondisplay', 'content', 'addtask'];
+    let contentDivEl = ['h1', 'div', 'button'];
+    let contentInner = ['Inbox', '', '+ Add Task']
     for (let i = 0; i < contentDiv.length; i++) {
         window[contentDiv[i]] = document.createElement(contentDivEl[i]);
         window[contentDiv[i]].id = `${contentDiv[i]}`;
-        content.appendChild(window[contentDiv[i]]);
-        window[contentDiv[i]].innerHTML = contentInner[i];
+        if (contentInner[i] != '') window[contentDiv[i]].innerHTML = contentInner[i];
     }
+    contentpage.appendChild(buttondisplay);
+    contentpage.appendChild(content);
+    content.appendChild(addtask);
 }
 
 export default buildPage

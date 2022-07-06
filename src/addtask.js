@@ -1,9 +1,8 @@
 import Task from "./displaytask";
 import editFunc from './editfunc';
-let classTrack = [];
 let div = 0;
 
-function addTask() {
+function addTask(classTrack) {
     let content = document.getElementById('content');
     let addButton = document.getElementById('addtask');
 
@@ -72,22 +71,30 @@ function addTask() {
     add.addEventListener('click', () => {
         let task = new Task(title.value, description.value, duedate.value, priority.value, div);
         classTrack.push(task);
+        classTrack.sort(function(a, b) {
+            return new Date(a.date) - new Date(b.date);
+        });
         task.displayTask(classTrack);
         editFunc();
-        userbutton.addEventListener('click', () => {
-            classTrack = classTrack.filter(element => {
-                return element.getId() != null;
+        let rbuttons = document.querySelectorAll('.userbutton');
+        rbuttons.forEach(userbutton => {
+            userbutton.addEventListener('click', () => {
+                classTrack = classTrack.filter(element => {
+                        return element.getId() != null;
+                    })
+                    // console.log(classTrack);
             })
-        })
+        });
+
+        // console.log(classTrack);
         div++;
-        console.log(classTrack);
         newForm.remove();
         let addtask = document.createElement('button');
         addtask.id = 'addtask';
         addtask.innerHTML = '+Add Task';
         content.appendChild(addtask);
         document.getElementById('addtask').addEventListener('click', () => {
-            addTask();
+            addTask(classTrack);
         })
     })
     newForm.addEventListener('submit', (event) => {
