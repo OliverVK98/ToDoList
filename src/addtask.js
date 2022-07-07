@@ -1,12 +1,13 @@
-import Task from "./displaytask";
+import Task from "./task";
 import editFunc from './editfunc';
-let div = 0;
+import displayTask from './displaytask';
+let classId = 0;
 
 function addTask(classTrack) {
     let content = document.getElementById('content');
     let addButton = document.getElementById('addtask');
-
     content.removeChild(addButton);
+
     let newForm = document.createElement('form');
     newForm.id = 'userform';
     content.appendChild(newForm);
@@ -67,33 +68,41 @@ function addTask(classTrack) {
         window[buttonDiv[i]].innerHTML = buttonInner[i];
         newForm.appendChild(window[buttonDiv[i]]);
     }
+
     add.type = 'submit';
     add.addEventListener('click', () => {
-        let task = new Task(title.value, description.value, duedate.value, priority.value, div);
+        let task = new Task(title.value, description.value, duedate.value, priority.value, classId);
+        classId++;
+
         classTrack.push(task);
         classTrack.sort(function(a, b) {
             return new Date(a.date) - new Date(b.date);
         });
-        task.displayTask(classTrack);
-        editFunc();
-        let rbuttons = document.querySelectorAll('.userbutton');
-        rbuttons.forEach(userbutton => {
-            userbutton.addEventListener('click', () => {
-                classTrack = classTrack.filter(element => {
-                        return element.getId() != null;
-                    })
-                    // console.log(classTrack);
-            })
-        });
 
-        // console.log(classTrack);
-        div++;
+        classTrack = classTrack.filter(element => {
+            return element.id != null;
+        })
+
+        displayTask(classTrack);
+        editFunc();
+
+        for (let k = 0; k < classTrack.length; k++) {
+            document.getElementById(`button${classTrack[k].id}`).addEventListener('click', () => {
+                document.getElementById(classTrack[k].id).remove();
+                classTrack[k].id = null;
+            })
+        }
+
         newForm.remove();
         let addtask = document.createElement('button');
         addtask.id = 'addtask';
         addtask.innerHTML = '+Add Task';
         content.appendChild(addtask);
+
         document.getElementById('addtask').addEventListener('click', () => {
+            classTrack = classTrack.filter(element => {
+                return element.id != null;
+            })
             addTask(classTrack);
         })
     })
@@ -107,7 +116,7 @@ function addTask(classTrack) {
         addtask.innerHTML = '+Add Task';
         content.appendChild(addtask);
         document.getElementById('addtask').addEventListener('click', () => {
-            addTask();
+            addTask(classTrack);
         })
     })
 }

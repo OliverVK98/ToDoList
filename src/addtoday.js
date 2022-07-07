@@ -1,5 +1,6 @@
 import formatDate from "./formatdate";
-import Task from "./displaytask";
+import Task from "./task";
+import displayTask from "./displaytask";
 
 function addToday(classTrack) {
 
@@ -9,8 +10,7 @@ function addToday(classTrack) {
         return element.date === today;
     })
 
-    let task = new Task('', '', '', '', '');
-    task.displayTask(newClassTrack);
+    displayTask(newClassTrack);
 
 }
 

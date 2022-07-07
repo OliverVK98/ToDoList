@@ -1,5 +1,6 @@
 import formatDate from "./formatdate";
-import Task from "./displaytask";
+import Task from "./task";
+import displayTask from "./displaytask";
 
 function addWeek(classTrack) {
     let newDays;
@@ -18,8 +19,7 @@ function addWeek(classTrack) {
         return newDays.includes(element.date);
     })
 
-    let task = new Task('', '', '', '', '');
-    task.displayTask(newClassTrack);
+    displayTask(newClassTrack);
 }
 
 export default addWeek
