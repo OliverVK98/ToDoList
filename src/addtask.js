@@ -99,12 +99,12 @@ function addTask(classTrack) {
         addtask.innerHTML = '+Add Task';
         content.appendChild(addtask);
 
+        localStorage.setItem('classTrack', JSON.stringify(classTrack));
         document.getElementById('addtask').addEventListener('click', () => {
-            classTrack = classTrack.filter(element => {
-                return element.id != null;
-            })
             addTask(classTrack);
         })
+
+        console.log(classTrack);
     })
     newForm.addEventListener('submit', (event) => {
         event.preventDefault();

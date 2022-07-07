@@ -1,5 +1,4 @@
 import formatDate from "./formatdate";
-import Task from "./task";
 import displayTask from "./displaytask";
 
 function addToday(classTrack) {
@@ -11,6 +10,13 @@ function addToday(classTrack) {
     })
 
     displayTask(newClassTrack);
+
+    for (let k = 0; k < classTrack.length; k++) {
+        if (document.getElementById(`button${classTrack[k].id}`)) document.getElementById(`button${classTrack[k].id}`).addEventListener('click', () => {
+            document.getElementById(classTrack[k].id).remove();
+            classTrack[k].id = null;
+        })
+    }
 
 }
 
