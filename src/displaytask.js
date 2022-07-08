@@ -1,4 +1,6 @@
-function displayTask(array) {
+function displayTask() {
+    const array = JSON.parse(localStorage.getItem(('classTrack')));
+    console.log(array);
     content.innerHTML = '';
     for (let k = 0; k < array.length; k++) {
 

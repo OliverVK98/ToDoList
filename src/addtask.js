@@ -3,7 +3,9 @@ import editFunc from './editfunc';
 import displayTask from './displaytask';
 let classId = 0;
 
-function addTask(classTrack) {
+function addTask() {
+    let classTrack = JSON.parse(localStorage.getItem(('classTrack')));
+
     let content = document.getElementById('content');
     let addButton = document.getElementById('addtask');
     content.removeChild(addButton);
@@ -83,13 +85,17 @@ function addTask(classTrack) {
             return element.id != null;
         })
 
+        localStorage.setItem('classTrack', JSON.stringify(classTrack));
+        console.log('before the display= ', classTrack);
+        classTrack = JSON.parse(localStorage.getItem(('classTrack')));
         displayTask(classTrack);
         editFunc();
-
+        console.log(classTrack[0].id);
         for (let k = 0; k < classTrack.length; k++) {
             document.getElementById(`button${classTrack[k].id}`).addEventListener('click', () => {
                 document.getElementById(classTrack[k].id).remove();
                 classTrack[k].id = null;
+                localStorage.setItem('classTrack', JSON.stringify(classTrack));
             })
         }
 
@@ -101,10 +107,9 @@ function addTask(classTrack) {
 
         localStorage.setItem('classTrack', JSON.stringify(classTrack));
         document.getElementById('addtask').addEventListener('click', () => {
-            addTask(classTrack);
+            addTask();
         })
 
-        console.log(classTrack);
     })
     newForm.addEventListener('submit', (event) => {
         event.preventDefault();

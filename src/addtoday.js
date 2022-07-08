@@ -18,6 +18,12 @@ function addToday(classTrack) {
         })
     }
 
+    document.getElementById('inbox').addEventListener('click', () => {
+        document.getElementById('buttondisplay').innerHTML = 'Inbox';
+        if (document.getElementById('addtask')) document.getElementById('addtask').remove();
+        if (classTrack.length != 0) displayTask(JSON.parse(localStorage.getItem('classTrack')));
+    })
+
 }
 
 export default addToday
