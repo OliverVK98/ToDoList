@@ -2,7 +2,7 @@ function displayTask() {
     const array = JSON.parse(localStorage.getItem(('classTrack')));
     console.log(array);
     content.innerHTML = '';
-    for (let k = 0; k < array.length; k++) {
+    for (let k = 0; k <= array.length; k++) {
 
         let userDiv = ['usertask', 'usertitle', 'userhead', 'userdesc', 'userdate', 'userbutton'];
         let userDivEl = ['div', 'h1', 'div', 'div', 'div', 'button'];
@@ -26,6 +26,13 @@ function displayTask() {
         if (array[k].urgency === 'Urgent') usertask.style.backgroundColor = 'rgb(255,250,156)';
         if (array[k].urgency === 'Very Urgent') usertask.style.backgroundColor = 'rgb(253,152,0)';
         // localStorage.setItem('userlist', JSON.stringify(array));
+        for (let k = 0; k <= array.length; k++) {
+            document.getElementById(`button${array[k].id}`).addEventListener('click', () => {
+                document.getElementById(array[k].id).remove();
+                array[k].id = null;
+                localStorage.setItem('classTrack', JSON.stringify(array));
+            })
+        }
     }
 }
 

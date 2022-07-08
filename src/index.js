@@ -9,22 +9,13 @@ let classTrack = [];
 
 buildPage();
 
-localStorage.setItem('classTrack', JSON.stringify(classTrack));
-// classTrack = localStorage.getItem('userlist');
-// if (classTrack != null) {
-//     classTrack = JSON.parse(localStorage.getItem('userlist'));
-//     displayTask(classTrack);
-//     let addtask = document.createElement('button');
-//     addtask.id = 'addtask';
-//     addtask.innerHTML = '+Add Task';
-//     content.appendChild(addtask);
-//     for (let k = 0; k < classTrack.length; k++) {
-//         document.getElementById(`button${classTrack[k].id}`).addEventListener('click', () => {
-//             document.getElementById(classTrack[k].id).remove();
-//             classTrack[k].id = null;
-//         })
-//     }
-// } else classTrack = []
+if (JSON.parse(localStorage.getItem('classTrack')) != null) {
+    displayTask();
+    let addtask = document.createElement('button');
+    addtask.id = 'addtask';
+    addtask.innerHTML = '+Add Task';
+    content.appendChild(addtask);
+} else localStorage.setItem('classTrack', JSON.stringify(classTrack));
 
 
 
@@ -57,6 +48,8 @@ document.getElementById('today').addEventListener('click', () => {
     document.getElementById('buttondisplay').innerHTML = 'Today';
     if (document.getElementById('addtask')) document.getElementById('addtask').remove();
     addToday(JSON.parse(localStorage.getItem('classTrack')));
+
+
 })
 
 document.getElementById('thisweek').addEventListener('click', () => {

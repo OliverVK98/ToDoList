@@ -91,13 +91,7 @@ function addTask() {
         displayTask();
         editFunc();
 
-        for (let k = 0; k < classTrack.length; k++) {
-            document.getElementById(`button${classTrack[k].id}`).addEventListener('click', () => {
-                document.getElementById(classTrack[k].id).remove();
-                classTrack[k].id = null;
-                localStorage.setItem('classTrack', JSON.stringify(classTrack));
-            })
-        }
+
 
         newForm.remove();
         let addtask = document.createElement('button');
@@ -121,7 +115,7 @@ function addTask() {
         addtask.innerHTML = '+Add Task';
         content.appendChild(addtask);
         document.getElementById('addtask').addEventListener('click', () => {
-            addTask(classTrack);
+            addTask();
         })
     })
 }
