@@ -2,7 +2,7 @@ import formatDate from "./formatdate";
 import Task from "./task";
 import displayTask from "./displaytask";
 
-function addWeek(classTrack) {
+function addWeek() {
     let newDays;
     let day = moment().startOf('isoWeek');
     let endOfWeek = moment().endOf('isoWeek');
@@ -15,11 +15,17 @@ function addWeek(classTrack) {
 
     newDays = days.map(formatDate);
 
+    let classTrack = JSON.parse(localStorage.getItem('classTrack'));
+
     let newClassTrack = classTrack.filter(element => {
         return newDays.includes(element.date);
     })
 
-    displayTask(newClassTrack);
+    localStorage.setItem('classTrack', JSON.stringify(newClassTrack));
+
+    displayTask();
+
+    localStorage.setItem('classTrack', JSON.stringify(classTrack));
 }
 
 export default addWeek

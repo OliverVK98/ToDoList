@@ -8,7 +8,7 @@ function buildPage() {
         container.appendChild(window[pageDiv[i]]);
     }
     header.innerHTML = 'Todo List';
-    let sidebarDiv = ['inbox', 'today', 'thisweek', 'projects', 'addproject'];
+    let sidebarDiv = ['inbox', 'today', 'thisweek']; //, 'projects', 'addproject'
     let sidebarDivEl = ['button', 'button', 'button', 'h1', 'button', 'p'];
     let sidebarInner = ['Inbox', 'Today', 'This week', 'Projects', '+ Add Project'];
     for (let i = 0; i < sidebarDiv.length; i++) {

@@ -1,9 +1,10 @@
 import Task from "./task";
 import editFunc from './editfunc';
 import displayTask from './displaytask';
-let classId = 0;
 
 function addTask() {
+    let classId;
+    if (JSON.parse(localStorage.getItem('id')) != null) { classId = JSON.parse(localStorage.getItem('id')) } else classId = 0;
     let content = document.getElementById('content');
     let addButton = document.getElementById('addtask');
     content.removeChild(addButton);
@@ -73,7 +74,8 @@ function addTask() {
     add.addEventListener('click', () => {
         let classTrack = JSON.parse(localStorage.getItem(('classTrack')));
         let task = new Task(title.value, description.value, duedate.value, priority.value, classId);
-        classId++;
+
+
 
         classTrack.push(task);
         classTrack.sort(function(a, b) {
@@ -86,19 +88,20 @@ function addTask() {
 
         localStorage.setItem('classTrack', JSON.stringify(classTrack));
 
-        console.log('before the display= ', classTrack);
+
         classTrack = JSON.parse(localStorage.getItem(('classTrack')));
         displayTask();
         editFunc();
 
 
-
+        classId++;
+        localStorage.setItem('id', JSON.stringify(classId));
         newForm.remove();
         let addtask = document.createElement('button');
         addtask.id = 'addtask';
         addtask.innerHTML = '+Add Task';
         content.appendChild(addtask);
-
+        console.log(classTrack);
         localStorage.setItem('classTrack', JSON.stringify(classTrack));
         document.getElementById('addtask').addEventListener('click', () => {
             addTask();
