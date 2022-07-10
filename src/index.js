@@ -25,12 +25,14 @@ document.getElementById('today').addEventListener('click', () => {
     document.getElementById('buttondisplay').innerHTML = 'Today';
     if (document.getElementById('addtask')) document.getElementById('addtask').remove();
     addToday();
+    console.log(JSON.parse(localStorage.getItem('classTrack')))
 })
 
 document.getElementById('thisweek').addEventListener('click', () => {
     document.getElementById('buttondisplay').innerHTML = 'This Week';
     if (document.getElementById('addtask')) document.getElementById('addtask').remove();
     addWeek();
+    console.log(JSON.parse(localStorage.getItem('classTrack')))
 })
 
 document.getElementById('inbox').addEventListener('click', () => {

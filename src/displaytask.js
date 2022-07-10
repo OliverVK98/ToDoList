@@ -35,19 +35,18 @@ function displayTask() {
     for (let k = 0; k < array.length; k++) {
 
         document.getElementById(`button${array[k].id}`).addEventListener('click', () => {
-            array = JSON.parse(localStorage.getItem('classTrack'));
 
 
-            console.log(array, array[k].id);
+            console.log(array);
             document.getElementById(array[k].id).remove();
             array[k].id = null;
 
             localStorage.setItem('classTrack', JSON.stringify(array));
-            console.log(array);
 
 
         })
     }
+
 }
 
 export default displayTask
